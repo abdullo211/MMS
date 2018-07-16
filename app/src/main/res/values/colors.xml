@@ -6,8 +6,9 @@
     <color name="colorAccentDark">#267c9c</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorGrayLight">#e8e8e8</color>
-    <color name="colorGrayDark">#646464</color>
+    <color name="colorGrayDark">#2F3134</color>
     <color name="colorGray">#6c6c6c</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBlue">#259be4</color>
+    <color name="colorHint">#b4b4b4</color>
 </resources>

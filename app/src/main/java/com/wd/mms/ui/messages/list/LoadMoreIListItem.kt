@@ -8,12 +8,10 @@ import com.mindorks.placeholderview.annotations.expand.Parent
 import com.mindorks.placeholderview.annotations.infinite.LoadMore
 import com.wd.mms.R
 
-@Parent
 @Layout(R.layout.list_item_progress)
-class LoadMoreIListItem(private val onLoadMore: () -> Unit) {
+class LoadMoreIListItem(val onLoadMore: () -> Unit) {
 
     @View(R.id.progress)
-    private
     lateinit var progressBar: ProgressBar
 
 

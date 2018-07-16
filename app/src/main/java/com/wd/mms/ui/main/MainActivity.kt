@@ -4,14 +4,19 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SlidingPaneLayout
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.wd.mms.R
+import com.wd.mms.presentation.main.MainPresenter
+import com.wd.mms.presentation.main.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : AppCompatActivity(), SlidingPaneLayout.PanelSlideListener {
+class MainActivity : MvpAppCompatActivity(), MainView, SlidingPaneLayout.PanelSlideListener {
 
+    @InjectPresenter
+    lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +42,8 @@ class MainActivity : AppCompatActivity(), SlidingPaneLayout.PanelSlideListener {
 
             toolbar.setOnMenuItemClickListener {
                 if (it.itemId== R.id.action_user)
-
-
-                    return true
+                    presenter.onUserClicked()
+                true
             }
         }
     }

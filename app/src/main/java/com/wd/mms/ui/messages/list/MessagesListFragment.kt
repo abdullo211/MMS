@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.wd.mms.R
 import com.wd.mms.entity.Message
-import com.wd.mms.extensions.visible
 import com.wd.mms.presentation.messages.list.MessageListPresenter
 import com.wd.mms.presentation.messages.list.MessageListView
 import kotlinx.android.synthetic.main.fragment_messages_list.*
+import com.wd.mms.extensions.visible
 
 class MessagesListFragment : Fragment(), MessageListView {
 
@@ -25,37 +25,30 @@ class MessagesListFragment : Fragment(), MessageListView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        messagesPlaceHolder.setLoadMoreResolver(LoadMoreIListItem { presenter.OnLoadMore() })
-        messagesSwipeRefresh.setOnRefreshListener {
-            presenter.onReloadClicked()
-            messagesSwipeRefresh.isRefreshing = false
-        }
+    //    messagesPlaceHolder.setLoadMoreResolver(LoadMoreIListItem { presenter.OnLoadMore() })
     }
 
     override fun addMessages(messages: ArrayList<Message>) {
         messages.forEach {
-            messagesPlaceHolder.addView(MessageListItem(it) { id -> presenter.onMessageShowMoreClicked(id) })
+         //   messagesPlaceHolder.addView(MessageListItem(it) { id -> presenter.onMessageShowMoreClicked(id) })
         }
     }
 
-    // TODO optimize this
     override fun showProgress(isShown: Boolean) {
-
-        if (messagesPlaceHolder.allViewResolvers.isNotEmpty())
+       /* if (messagesPlaceHolder.allViewResolvers.isNotEmpty())
             messagesProgress.visible(isShown)
         else
-            if (!isShown) {
+            if (!isShown)
                 messagesPlaceHolder.loadingDone()
-                messagesProgress.visible(isShown)
-            }
+                */
     }
 
     override fun noMoreLoad() {
-        messagesPlaceHolder.noMoreToLoad()
+      //  messagesPlaceHolder.noMoreToLoad()
     }
 
     override fun clearMessages() {
-        messagesPlaceHolder.removeAllViews()
+      //  messagesPlaceHolder.removeAllViews()
     }
 
 }

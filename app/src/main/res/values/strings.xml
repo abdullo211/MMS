@@ -12,4 +12,12 @@
     <string name="report">Report</string>
     <string name="title_login">Login</string>
     <string name="title_see_more">See more</string>
+    <string name="title_password">Password</string>
+    <string name="title_forgot_password">Forgot password?</string>
+    <string name="title_sign_up">Sign up</string>
+    <string name="title_sign_in">Sign in</string>
+    <string name="title_email">Email</string>
+    <string name="title_name">Name</string>
+    <string name="title_confirm_password">Confirm password</string>
+    <string name="message_login_or_password_incorrect">Логин или пароль неверны</string>
 </resources>

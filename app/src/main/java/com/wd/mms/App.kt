@@ -19,7 +19,7 @@ class App : Application() {
         appScope.installModules(AppModule(this))
 
         val serverScope = Toothpick.openScopes(DI.APP_SCOPE, DI.SERVER_SCOPE)
-        serverScope.installModules(ServerModule(BuildConfig.ORIGIN_ENDPOINT))
+        serverScope.installModules(ServerModule())
     }
 
 
