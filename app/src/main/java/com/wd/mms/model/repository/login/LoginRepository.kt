@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class LoginRepository @Inject constructor(private val api: Api) {
 
-    fun signIn(username: String, password: String): Single<Token> = api.signIn(username, password)
+    fun signIn(email: String, password: String): Single<Token> = api.signIn(email, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
@@ -17,6 +17,5 @@ class LoginRepository @Inject constructor(private val api: Api) {
             api.signUp(username,fullName,password,password)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-
 
 }

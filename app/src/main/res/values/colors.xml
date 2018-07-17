@@ -11,4 +11,5 @@
     <color name="colorBlack">#000000</color>
     <color name="colorBlue">#259be4</color>
     <color name="colorHint">#b4b4b4</color>
+    <color name="colorRed">#ff4949</color>
 </resources>

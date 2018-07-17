@@ -19,13 +19,10 @@ class ServerModule : Module() {
     init {
         bind(String::class.java).withName(ServerPath::class.java).toInstance(BuildConfig.ORIGIN_ENDPOINT)
         bind(OkHttpClient::class.java).toProvider(OkHttpClientProvider::class.java).providesSingletonInScope()
-        bind(AuthHolder::class.java).to(AuthPrefs::class.java).singletonInScope()
         bind(Api::class.java).toProvider(ApiProvider::class.java).providesSingletonInScope()
 
         bind(MessageInteractor::class.java)
         bind(MessageRepository::class.java)
-
-
 
         bind(LoginInteractor::class.java)
         bind(LoginRepository::class.java)

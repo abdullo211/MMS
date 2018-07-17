@@ -9,11 +9,21 @@ import javax.inject.Inject
 class LoginInteractor @Inject constructor(private val loginRepository: LoginRepository,
                                           private val authHolder: AuthHolder) {
 
-    fun signIn(login: String, password: String):
-            Single<Token> = loginRepository.signIn(login, password)
-            .doOnSuccess { authHolder.token = it.token }
+    fun signIn(email: String, password: String):
+            Single<Token> = loginRepository.signIn(email, password)
+            .doAfterSuccess {
+                saveToken(it)
+            }
+
 
     fun signUp(email: String, fullName: String, password: String):
             Single<Token> = loginRepository.signUp(email, fullName, password)
-            .doOnSuccess { authHolder.token = it.token }
+            .doAfterSuccess {
+                saveToken(it)
+            }
+
+
+    private fun saveToken(token: Token) {
+        authHolder.token = token.token
+    }
 }

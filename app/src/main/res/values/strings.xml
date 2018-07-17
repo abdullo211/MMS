@@ -20,4 +20,9 @@
     <string name="title_name">Name</string>
     <string name="title_confirm_password">Confirm password</string>
     <string name="message_login_or_password_incorrect">Логин или пароль неверны</string>
+    <string name="title_log_out">Log out</string>
+    <string name="message_log_out">Do you want to exit?</string>
+    <string name="title_ok">Ok</string>
+    <string name="title_yes">Yes</string>
+    <string name="title_cancel">Cancel</string>
 </resources>
