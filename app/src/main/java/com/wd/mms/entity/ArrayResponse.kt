@@ -1,6 +1,9 @@
 package com.wd.mms.entity
 
-class ArrayResponse<T:Any>  {
+import com.google.gson.annotations.SerializedName
 
-    val list:ArrayList<T>  = ArrayList()
-}
+data class ArrayResponse<T : Any>(@SerializedName("results")
+                                  val list: ArrayList<T> = ArrayList(),
+                                  @SerializedName("next")
+                                  val nextPage: String? = null
+)

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="EntryPointsManager">
-    <list size="7">
+    <list size="8">
       <item index="0" class="java.lang.String" itemvalue="com.arellomobile.mvp.presenter.InjectPresenter" />
       <item index="1" class="java.lang.String" itemvalue="com.arellomobile.mvp.presenter.ProvidePresenter" />
       <item index="2" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.Click" />
-      <item index="3" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.View" />
+      <item index="3" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.Resolve" />
       <item index="4" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.View" />
       <item index="5" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.View" />
-      <item index="6" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.infinite.LoadMore" />
+      <item index="6" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.View" />
+      <item index="7" class="java.lang.String" itemvalue="com.mindorks.placeholderview.annotations.infinite.LoadMore" />
     </list>
   </component>
   <component name="NullableNotNullManager">

@@ -15,6 +15,15 @@ class MainPresenter @Inject constructor(private val mainInteractor: MainInteract
         else
             viewState.showMessagesPage()
 
+        if (mainInteractor.isUserDetailsEmpty())
+            getUserDetails()
+
+    }
+
+    private fun getUserDetails() {
+        mainInteractor.getUserDetails()
+                .subscribe({},{})
+                .connect()
     }
 
     fun onActivityResult() {

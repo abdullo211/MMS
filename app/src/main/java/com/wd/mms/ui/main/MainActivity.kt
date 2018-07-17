@@ -48,10 +48,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, SlidingPaneLayout.PanelSl
         panelLayout.sliderFadeColor = Color.TRANSPARENT
         panelLayout.setPanelSlideListener(this)
         nav_view.setNavigationItemSelectedListener(this)
-        fab.setOnClickListener {
-            Snackbar.make(it, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+
         initToolbar()
     }
 

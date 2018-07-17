@@ -1,5 +1,6 @@
 package com.wd.mms.toothpick.provider
 
+import com.google.gson.Gson
 import com.wd.mms.model.data.Api
 import com.wd.mms.toothpick.qualifier.ServerPath
 import okhttp3.OkHttpClient
@@ -12,6 +13,7 @@ import javax.inject.Provider
 
 class ApiProvider @Inject constructor(
         private val okHttpClient: OkHttpClient,
+        private val gson: Gson,
         @ServerPath private val serverPath: String
 ) : Provider<Api> {
 

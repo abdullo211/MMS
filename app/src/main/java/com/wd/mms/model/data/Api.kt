@@ -3,6 +3,7 @@ package com.wd.mms.model.data
 import com.wd.mms.entity.ArrayResponse
 import com.wd.mms.entity.Message
 import com.wd.mms.entity.Token
+import com.wd.mms.entity.User
 import io.reactivex.Single
 import retrofit2.http.*
 
@@ -25,5 +26,8 @@ interface Api {
 
     @GET("/$API_PATH/main/message/")
     fun getMessages(@Query("page") page: Int): Single<ArrayResponse<Message>>
+
+    @GET("/$API_PATH/main/user/detail/")
+    fun getUserDetails(): Single<User>
 
 }
