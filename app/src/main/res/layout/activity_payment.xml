@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".ui.payment.PaymentActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorWhite"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title="@string/title_payment"
+        app:titleTextColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/pleaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/title_enter_card_details"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/cardNumberLayout"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="5dp"
+        app:cardBackgroundColor="#f7f7f7"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="0dp"
+        app:contentPadding="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pleaseText"
+        app:strokeColor="@color/colorGrayLight"
+        app:strokeWidth="1dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <com.stripe.android.view.CardNumberEditText
+            android:id="@+id/cardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_height"
+            android:background="@android:color/transparent"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:hint="@string/title_card_number_hint"
+            android:inputType="number"
+            android:maxLength="19"
+            android:textColor="@color/colorBlack"
+            app:cardTextErrorColor="@color/colorBlack" />
+    </android.support.design.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/title_exp_month"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumberLayout" />
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/monthSpinnerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:padding="5dp"
+        app:cardBackgroundColor="#f7f7f7"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="0dp"
+        app:contentPadding="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:strokeColor="@color/colorGrayLight"
+        app:strokeWidth="1dp">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/monthSpinner"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/edit_height"
+            tools:listitem="@android:layout/simple_spinner_item" />
+    </android.support.design.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/title_year"
+        app:layout_constraintStart_toEndOf="@+id/monthSpinnerLayout"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumberLayout" />
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/yearSpinnerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:padding="5dp"
+        app:cardBackgroundColor="#f7f7f7"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="0dp"
+        app:contentPadding="3dp"
+        app:layout_constraintStart_toEndOf="@+id/monthSpinnerLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:strokeColor="@color/colorGrayLight"
+        app:strokeWidth="1dp">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/yearSpinner"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/edit_height"
+            tools:listitem="@android:layout/simple_spinner_item" />
+    </android.support.design.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/title_card_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumberLayout" />
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/cvcLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:padding="5dp"
+        app:cardBackgroundColor="#f7f7f7"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="0dp"
+        app:contentPadding="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView3"
+        app:strokeColor="@color/colorGrayLight"
+        app:strokeWidth="1dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <com.stripe.android.view.CardNumberEditText
+            android:id="@+id/cvcText"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/edit_height"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:hint="@string/title_cvc"
+            android:inputType="number"
+            android:maxLength="3"
+            android:minWidth="70dp"
+            android:textColor="@color/colorBlack"
+            app:cardTextErrorColor="@color/colorBlack" />
+    </android.support.design.card.MaterialCardView>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorAccent"
+        android:text="@string/title_pay"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/colorGrayLight" />
+
+</android.support.constraint.ConstraintLayout>

@@ -25,4 +25,22 @@
     <string name="title_ok">Ok</string>
     <string name="title_yes">Yes</string>
     <string name="title_cancel">Cancel</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="default_notification_channel_id">mms_notification_channel</string>
+    <string name="title_message">Message</string>
+    <string name="title_month">Month</string>
+    <string name="title_year">Exp year</string>
+    <string name="title_cvc">cvc</string>
+    <string name="title_card_code">Card code</string>
+    <string name="title_pay">Pay</string>
+    <string name="title_enter_card_details">Please enter your card details</string>
+    <string name="title_card_number_hint">XXXX XXXX XXXX XXXX</string>
+    <string name="title_exp_month">Exp month</string>
+    <string name="title_choose_subscription_plan">Please select subscription plan</string>
+    <string name="title_payment">Payment</string>
+    <string name="stripe_key">pk_test_Pn1W1uvdzBHljScx2MpprHe3</string>
+    <string name="title_error">Error</string>
+    <string name="error_operation">An error occurred while performing the operation</string>
+    <string name="title_forgot_password_send">We sent password to your email</string>
+    <string name="message_operation_finishsuccess">Operation completed successfully</string>
 </resources>

@@ -28,7 +28,7 @@
         android:background="@color/colorWhite"
         app:cardCornerRadius="5dp"
         app:cardElevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/usernameLayout"
+        app:layout_constraintBottom_toTopOf="@+id/fullNameLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:strokeColor="@color/colorGrayLight"
         app:strokeWidth="1dp">
@@ -48,7 +48,7 @@
     </android.support.design.card.MaterialCardView>
 
     <android.support.design.card.MaterialCardView
-        android:id="@+id/usernameLayout"
+        android:id="@+id/fullNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -66,7 +66,7 @@
         app:strokeWidth="1dp">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/userNameText"
+            android:id="@+id/fullNameText"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_margin="2dp"
@@ -90,7 +90,7 @@
         android:layout_marginTop="10dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/usernameLayout"
+        app:layout_constraintTop_toBottomOf="@+id/fullNameLayout"
         android:background="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

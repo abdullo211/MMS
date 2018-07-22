@@ -1,7 +1,7 @@
 package com.wd.mms.toothpick.provider
 
 import com.google.gson.Gson
-import com.wd.mms.model.data.Api
+import com.wd.mms.model.data.api.Api
 import com.wd.mms.toothpick.qualifier.ServerPath
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

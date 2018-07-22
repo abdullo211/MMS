@@ -12,7 +12,7 @@ import com.wd.mms.entity.Message
 
 @Parent
 @Layout(R.layout.list_item_message)
-class MessageListItem(private val message: Message, private val onSeeMoreClick: (Int) -> Unit) {
+class MessageListItem(private val message: Message, private val onSeeMoreClick: (Message) -> Unit) {
 
     @View(R.id.messageDateText)
     lateinit var dateText: AppCompatTextView
@@ -30,16 +30,18 @@ class MessageListItem(private val message: Message, private val onSeeMoreClick: 
         iconImage.setImageResource(getStatusImage(message.type))
     }
 
-    @Click(R.id.messageSeeMoreText)
+    @Click(R.id.messageItemMainLayout)
     fun onSeeMoreClicked() {
-        onSeeMoreClick.invoke(message.id)
+        onSeeMoreClick.invoke(message)
     }
 
     private fun getStatusImage(type: String): Int {
         return when (type) {
             "warning" -> R.drawable.ic_report_problem_yellow_36dp
+            "up" -> R.drawable.ic_arrow_upward_green_36dp
+            "down" -> R.drawable.ic_arrow_downward_red_36dp
             else -> {
-                R.drawable.ic_arrow_upward_green_36dp
+                R.drawable.ic_report_problem_yellow_36dp
             }
         }
     }

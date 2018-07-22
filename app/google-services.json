@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "522548433326",
+    "firebase_url": "https://mms-android-7ec59.firebaseio.com",
+    "project_id": "mms-android-7ec59",
+    "storage_bucket": "mms-android-7ec59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522548433326:android:5c05f56e704602a5",
+        "android_client_info": {
+          "package_name": "com.wd.mms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "522548433326-rfqa4qju5moant3d7hgjdhtcflb40u08.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACErV-TAVVgghf1-ySfm04qcZmB0GuvME"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

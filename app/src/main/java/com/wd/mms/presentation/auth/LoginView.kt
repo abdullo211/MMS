@@ -22,4 +22,6 @@ interface LoginView : MvpView {
     fun showError(text: String?)
 
     fun showMainPage()
+
+    fun showForgotSendDialog()
 }

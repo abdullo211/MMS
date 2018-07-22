@@ -10,5 +10,9 @@ data class Message(
         val description: String,
         @SerializedName("created_date")
         val createdDate: String?,
+        @SerializedName("message")
+        val message: String?,
         @SerializedName("type")
-        val type: String)
+        val type: String,
+        @SerializedName("image")
+        val image: String?)

@@ -1,15 +1,13 @@
 package com.wd.mms.presentation.auth
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.wd.mms.R
+import com.wd.mms.entity.Device
 import com.wd.mms.extensions.isValidEmail
-import com.wd.mms.model.interactor.LoginInteractor
+import com.wd.mms.model.interactor.login.LoginInteractor
 import com.wd.mms.model.system.ResourceManager
 import com.wd.mms.presentation.base.BasePresenter
-import com.wd.mms.toothpick.DI
 import retrofit2.HttpException
-import toothpick.Toothpick
 import javax.inject.Inject
 
 @InjectViewState
@@ -29,51 +27,40 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
     }
 
     fun onSignButtonClicked(email: String, fullName: String, password: String, confirm: String) {
-        if (validate(email, fullName, password, confirm))
-            if (isSignIn)
-                signIn(email, password)
+        if (validate(email, fullName, password, confirm)) {
+            val sign = if (isSignIn)
+                loginInteractor.signIn(email, password, Device(fcmToken = loginInteractor.fcmToken()))
             else
-                signUp(email, fullName, password)
+                loginInteractor.signUp(email, fullName, password, Device(fcmToken = loginInteractor.fcmToken()))
+
+            sign
+                    .doOnSubscribe { viewState.showProgress(true) }
+                    .doAfterTerminate { viewState.showProgress(false) }
+                    .subscribe({
+                        viewState.showMainPage()
+                    }, {
+                        if (it is HttpException)
+                            viewState.showError(it.message)
+                    }).apply {
+                        connect()
+                    }
+        }
     }
 
-    private fun signIn(email: String, password: String) {
-        loginInteractor.signIn(email, password)
-                .doOnSubscribe { viewState.showProgress(true) }
-                .doAfterTerminate { viewState.showProgress(false) }
-                .subscribe({
-                    openCloseScope()
-                    viewState.showMainPage()
-                }, {
-                    if (it is HttpException)
-                        viewState.showError(resourceManager.getString(R.string.message_login_or_password_incorrect))
-                }).apply {
-                    connect()
-                }
-    }
 
-    private fun openCloseScope() {
-        Toothpick.closeScope(DI.SERVER_SCOPE)
-        Toothpick.openScopes(DI.APP_SCOPE, DI.SERVER_SCOPE)
+    fun onForgotPasswordClicked(username: String) {
+        if (!username.isValidEmail())
+            viewState.showEmailError()
+        else
+            loginInteractor.forgotPassword(username)
+                    .doOnSubscribe { viewState.showProgress(true) }
+                    .doOnTerminate { viewState.showProgress(false) }
+                    .subscribe({
+                        viewState.showForgotSendDialog()
+                    }, {
+                        viewState.showError(resourceManager.getString(R.string.error_operation))
+                    })
     }
-
-    private fun signUp(email: String, fullName: String, password: String) {
-        loginInteractor.signUp(email, fullName, password)
-                .doOnSubscribe {
-                    viewState.showProgress(true)
-                }
-                .doAfterTerminate {
-                    viewState.showProgress(false)
-                }
-                .subscribe({
-                    viewState.showMainPage()
-                }, {
-                    if (it is HttpException)
-                        viewState.showError(it.message)
-                }).apply {
-                    connect()
-                }
-    }
-
 
     private fun validate(email: String, fullName: String, password: String, confirm: String): Boolean {
         var validated = true

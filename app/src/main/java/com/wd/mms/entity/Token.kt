@@ -1,3 +1,9 @@
 package com.wd.mms.entity
 
-data class Token(val token: String)
+import com.google.gson.annotations.SerializedName
+
+data class Token(
+        @SerializedName("token")
+        val token: String,
+        @SerializedName("active_subscription")
+        val subscriptions: ArrayList<ActiveSubscription>)

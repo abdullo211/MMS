@@ -3,27 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_group_templates">
 
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_messages"
             android:icon="@drawable/ic_chat_black_24dp"
+            android:orderInCategory="0"
             android:title="@string/title_messages" />
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_alarm_black_16dp"
-            android:title="@string/report" />
 
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_info_black_16dp"
-            android:title="@string/title_about_us" />
-        <item
-            android:checkable="false"
-            android:id="@+id/nav_log_out"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="@string/title_log_out" />
     </group>
-
+    <item
+        android:checkable="false"
+        android:id="@+id/nav_log_out"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:title="@string/title_log_out" />
 
 </menu>

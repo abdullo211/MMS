@@ -3,6 +3,7 @@ package com.wd.mms.ui.auth
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -19,12 +20,13 @@ import toothpick.Toothpick
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
 
+
     @InjectPresenter
     lateinit var presenter: LoginPresenter
 
     @ProvidePresenter
     fun provide(): LoginPresenter {
-        return Toothpick.openScopes(DI.SERVER_SCOPE)
+        return Toothpick.openScopes(DI.SERVER_SCOPE, DI.LOGIN_SCOPE)
                 .getInstance(LoginPresenter::class.java)
     }
 
@@ -42,13 +44,17 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
         }
 
         signButton.setOnClickListener {
-            presenter.onSignButtonClicked(emailText.text.toString(), userNameText.text.toString(),
+            presenter.onSignButtonClicked(emailText.text.toString(), fullNameText.text.toString(),
                     passwordText.text.toString(), confirmPasswordText.text.toString())
         }
 
-        userNameText.textChangeListener {
-            if (usernameLayout.strokeColor == ContextCompat.getColor(this, R.color.colorRed)) {
-                usernameLayout.strokeColor = ContextCompat.getColor(this, R.color.colorGrayLight)
+        forgotText.setOnClickListener {
+            presenter.onForgotPasswordClicked(emailText.text.toString())
+        }
+
+        fullNameText.textChangeListener {
+            if (fullNameLayout.strokeColor == ContextCompat.getColor(this, R.color.colorRed)) {
+                fullNameLayout.strokeColor = ContextCompat.getColor(this, R.color.colorGrayLight)
             }
         }
         passwordText.textChangeListener {
@@ -69,7 +75,7 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
     }
 
     override fun setState(isSignIn: Boolean) {
-        usernameLayout.visible(!isSignIn)
+        fullNameLayout.visible(!isSignIn)
         confirmPasswordLayout.visible(!isSignIn)
         signButton.setText(if (isSignIn) R.string.title_sign_in else R.string.title_sign_up)
         signButtonBottom.setText(if (!isSignIn) R.string.title_sign_in else R.string.title_sign_up)
@@ -88,7 +94,7 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
     }
 
     override fun showLoginError() {
-        usernameLayout.strokeColor = ContextCompat.getColor(this, R.color.colorRed)
+        fullNameLayout.strokeColor = ContextCompat.getColor(this, R.color.colorRed)
     }
 
     override fun showPasswordError() {
@@ -101,6 +107,14 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
 
     override fun showConfirmError() {
         confirmPasswordLayout.strokeColor = ContextCompat.getColor(this, R.color.colorRed)
+    }
+
+    override fun showForgotSendDialog() {
+        AlertDialog.Builder(this)
+                .setTitle(R.string.title_password)
+                .setMessage(R.string.title_forgot_password_send)
+                .create()
+                .show()
     }
 
     override fun showError(text: String?) {
