@@ -8,6 +8,7 @@ import com.stripe.android.model.Token
 import com.wd.mms.R
 import com.wd.mms.entity.ArrayResponse
 import com.wd.mms.entity.Subscription
+import com.wd.mms.model.auth.AuthHolder
 import com.wd.mms.model.data.api.Api
 import com.wd.mms.model.system.ResourceManager
 import io.reactivex.Observable
@@ -20,6 +21,7 @@ import javax.inject.Inject
 class PaymentRepository @Inject constructor(
         private val context: Context,
         private val api: Api,
+        private val authHolder: AuthHolder,
         private val resourceManager: ResourceManager) {
 
     fun getSubscriptions(): Single<ArrayResponse<Subscription>> =

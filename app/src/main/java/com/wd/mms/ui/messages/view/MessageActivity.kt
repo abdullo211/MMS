@@ -19,6 +19,8 @@ import kotlinx.android.synthetic.main.activity_message.*
 import kotlinx.android.synthetic.main.content_message.*
 import toothpick.Toothpick
 import toothpick.config.Module
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MessageActivity : MvpAppCompatActivity(), MessageInfoView {
 
@@ -68,11 +70,27 @@ class MessageActivity : MvpAppCompatActivity(), MessageInfoView {
         }
         iconImage.setImageResource(getStatusImage(message.type))
         descriptionText.text = message.description
-        dateText.text = message.createdDate
+        dateText.text = message.createdDate?.parsedDateShortSeparator()
     }
 
     override fun showProgress(isLoading: Boolean) {
         messageProgress.visible(isLoading)
+    }
+
+
+    fun String.parsedDateShortSeparator(): String {
+        val df = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.ENGLISH)
+        val sdf: SimpleDateFormat
+        val result: Date
+        try {
+            result = df.parse(this)
+            sdf = SimpleDateFormat("yyyy-MM-dd hh:mm", Locale("ru"))
+            sdf.timeZone = TimeZone.getTimeZone("GMT")
+        } catch (ignored: Exception) {
+            ignored.printStackTrace()
+            return this
+        }
+        return sdf.format(result)
     }
 
     private fun getStatusImage(type: String): Int {

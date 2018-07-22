@@ -13,10 +13,10 @@ import java.text.DecimalFormat
 class SubscriptionListItem(private val subscription: Subscription,
                            private val onSubscriptionSelect: (Subscription) -> Unit) {
 
-    @View(R.id.subscription_title)
+    @View(R.id.subscriptionTitle)
     lateinit var title: AppCompatTextView
 
-    @View(R.id.subscription_amount)
+    @View(R.id.subscriptionAmount)
     lateinit var amount: AppCompatTextView
 
 
@@ -30,5 +30,6 @@ class SubscriptionListItem(private val subscription: Subscription,
     fun onSubscriptionClick() {
         onSubscriptionSelect.invoke(subscription)
     }
+
 
 }

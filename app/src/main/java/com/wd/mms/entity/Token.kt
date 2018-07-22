@@ -6,4 +6,4 @@ data class Token(
         @SerializedName("token")
         val token: String,
         @SerializedName("active_subscription")
-        val subscriptions: ArrayList<ActiveSubscription>)
+        val subscriptions: ArrayList<ActiveSubscription>? = ArrayList())

@@ -13,4 +13,5 @@
     <color name="colorHint">#b4b4b4</color>
     <color name="colorRed">#ff4949</color>
     <color name="colorGreen">#21ac38</color>
+    <color name="colorBlueLight">#6acafd</color>
 </resources>

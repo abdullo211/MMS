@@ -5,6 +5,7 @@ interface AuthHolder {
     var fcmToken:String?
     var userName: String?
     var fullName: String?
+    var subscriptionTitle: String?
     var endSubscribe: String?
     fun clearData()
 }

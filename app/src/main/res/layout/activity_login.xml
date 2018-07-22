@@ -73,7 +73,7 @@
             android:layout_marginStart="8dp"
             android:background="@android:color/transparent"
             android:hint="@string/title_name"
-            android:inputType="textPersonName"
+            android:inputType="textCapWords"
             android:paddingLeft="8dp"
             android:textColorHint="@color/colorHint"
             android:textSize="15sp" />

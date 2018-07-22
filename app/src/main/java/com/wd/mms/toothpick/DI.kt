@@ -6,4 +6,5 @@ object DI {
     const  val LOGIN_SCOPE = "login_scope"
     const  val PAYMENT_SCOPE = "payment_scope"
     const val MESSAGE_SCOPE = "message_scope"
+    const val USER_SCOPE = "user_scope"
 }

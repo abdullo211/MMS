@@ -33,7 +33,9 @@ class MainPresenter @Inject constructor(private val mainInteractor: MainInteract
                 .doFinally { viewState.showProgress(false) }
                 .subscribe({
                     viewState.addTemplates(it.list)
-                }, {})
+                }, {
+                    it.printStackTrace()
+                })
                 .connect()
     }
 
@@ -45,7 +47,7 @@ class MainPresenter @Inject constructor(private val mainInteractor: MainInteract
             viewState.showMessagesPage()
     }
     fun onUserClicked(){
-
+        viewState.showUserMenu()
     }
 
     fun onLogOutMenuClicked() {

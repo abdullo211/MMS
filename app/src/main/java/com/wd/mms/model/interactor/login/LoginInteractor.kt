@@ -18,12 +18,15 @@ class LoginInteractor @Inject constructor(private val loginRepository: LoginRepo
             loginRepository.signIn(TokenRequest(email = email, password = password, device = device))
             .doAfterSuccess {
                 authHolder.token = it.token
+                authHolder.endSubscribe = it.subscriptions?.firstOrNull()?.endDate
             }
 
     fun signUp(email: String, fullName: String, password: String, device: Device): Single<Token> =
             loginRepository.signUp(TokenRequest(email, fullName, password, password, device))
             .doAfterSuccess {
                 authHolder.token = it.token
+                authHolder.subscriptionTitle = it.subscriptions?.firstOrNull()?.subscription?.title
+                authHolder.endSubscribe = it.subscriptions?.firstOrNull()?.endDate
             }
 
     fun fcmToken(): String? = fcmRepository.getToken()

@@ -1,9 +1,11 @@
 package com.wd.mms.ui.template
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wd.mms.R
@@ -50,6 +52,7 @@ class TemplateFragment : BaseFragment(), TemplateView {
 
     override fun setBody(htmlBody: String) {
         webView.settings.javaScriptEnabled = true
+
         val mime = "text/html"
         val encoding = "utf-8"
         webView.loadDataWithBaseURL(null, htmlBody, mime, encoding, null)

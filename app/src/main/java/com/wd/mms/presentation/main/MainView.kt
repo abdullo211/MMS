@@ -26,4 +26,6 @@ interface MainView : MvpView {
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun changeToolbarTitle(it: String?)
 
+    fun showUserMenu()
+
 }

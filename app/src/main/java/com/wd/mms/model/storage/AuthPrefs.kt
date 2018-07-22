@@ -7,7 +7,6 @@ import javax.inject.Inject
 
 class AuthPrefs @Inject constructor(private val context: Context) : AuthHolder {
 
-
     companion object {
         private const val APP_DATA = "app_data"
         private const val AUTH_DATA = "auth_data"
@@ -15,6 +14,7 @@ class AuthPrefs @Inject constructor(private val context: Context) : AuthHolder {
         private const val USERNAME = "username"
         private const val FCM_TOKEN = "fcm_token"
         private const val FULL_NAME = "fullName"
+        private const val SUBSCRIBE_TITLE= "subscribe_title"
         private const val SUBSCRIBE_DATE = "subscribe_end_date"
     }
 
@@ -52,6 +52,11 @@ class AuthPrefs @Inject constructor(private val context: Context) : AuthHolder {
             getSharedPreferences(APP_DATA).edit().putString(FCM_TOKEN, value).apply()
         }
 
+    override var subscriptionTitle: String?
+        get() = getSharedPreferences(AUTH_DATA).getString(SUBSCRIBE_TITLE, null)
+        set(value) {
+            getSharedPreferences(AUTH_DATA).edit().putString(SUBSCRIBE_TITLE, value).apply()
+        }
 
     override fun clearData() {
         getSharedPreferences(AUTH_DATA).edit().clear().apply()

@@ -66,7 +66,7 @@ class MessagesListFragment : BaseFragment(), MessageListView,
     }
 
     override fun showMainProgress(isLoading: Boolean) {
-        // showProgressDialog(isLoading)
+       showProgressDialog(isLoading)
     }
 
     override fun noMoreLoad() {

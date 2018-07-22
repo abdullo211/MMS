@@ -18,7 +18,6 @@ class MainInteractor @Inject constructor(private val authHolder: AuthHolder,
 
         realm.apply {
             executeTransaction { it.deleteAll() }
-            close()
         }
     }
 

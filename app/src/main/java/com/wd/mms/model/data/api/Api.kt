@@ -30,6 +30,9 @@ interface Api {
     @GET("/$API_PATH/main/message/{id}/")
     fun getMessage(@Path("id") messageId: Int): Single<Message>
 
+    @GET("/$API_PATH/main//user/subscription/")
+    fun getActiveSubscription(): Single<ArrayList<ActiveSubscription>>
+
     @GET("/$API_PATH/main/subscription/")
     fun getSubscriptions(): Single<ArrayResponse<Subscription>>
 

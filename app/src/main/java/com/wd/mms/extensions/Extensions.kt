@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.wd.mms.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 fun View.visible(isShown: Boolean) {
@@ -38,5 +40,20 @@ fun EditText.textChangeListener(onTextChange: (String) -> Unit) {
     fun MaterialCardView.setErrorEnabled() {
         this.strokeColor = ContextCompat.getColor(this.context, R.color.colorRed)
     }
+
+    fun String.parsedDateShortSeparator(): String {
+        val df = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", resources.configuration.locale)
+        val sdf: SimpleDateFormat
+        val result: Date
+        try {
+            result = df.parse(this)
+            sdf = SimpleDateFormat("yyyy-MM-dd", Locale("ru"))
+            sdf.timeZone = TimeZone.getTimeZone("GMT")
+        } catch (ignored: Exception) {
+            return this
+        }
+        return sdf.format(result)
+    }
+
 
 }

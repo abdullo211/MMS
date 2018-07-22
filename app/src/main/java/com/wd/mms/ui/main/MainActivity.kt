@@ -12,6 +12,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.wd.mms.R
 import com.wd.mms.entity.Template
+import com.wd.mms.model.system.ResourceManager
 import com.wd.mms.presentation.main.MainPresenter
 import com.wd.mms.presentation.main.MainView
 import com.wd.mms.toothpick.DI
@@ -19,15 +20,19 @@ import com.wd.mms.ui.auth.LoginActivity
 import com.wd.mms.ui.common.BaseActivity
 import com.wd.mms.ui.messages.list.MessagesListFragment
 import com.wd.mms.ui.template.TemplateFragment
+import com.wd.mms.ui.user.UserActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.menu_main.*
 import toothpick.Toothpick
+import javax.inject.Inject
 
 
 class MainActivity : BaseActivity(), MainView, SlidingPaneLayout.PanelSlideListener,
         NavigationView.OnNavigationItemSelectedListener {
 
+    @Inject
+    lateinit var resourseManager: ResourceManager
     companion object {
         const val LOGIN_RESULT = 1
     }
@@ -62,12 +67,11 @@ class MainActivity : BaseActivity(), MainView, SlidingPaneLayout.PanelSlideListe
                 panelLayout.closePane()
             else
                 panelLayout.openPane()
-
-            toolbar.setOnMenuItemClickListener {
-                if (it.itemId== R.id.action_user)
-                    presenter.onUserClicked()
-                true
-            }
+        }
+        toolbar.setOnMenuItemClickListener {
+            if (it.itemId == R.id.action_user)
+                presenter.onUserClicked()
+            true
         }
     }
 
@@ -96,7 +100,11 @@ class MainActivity : BaseActivity(), MainView, SlidingPaneLayout.PanelSlideListe
             nav_view.menu.add(R.id.nav_group_templates,
                     template.id,
                     0,
-                    template.title)
+                    template.title).apply {
+                getMenuIcon(template.code)?.let {
+                    setIcon(it)
+                }
+            }
         }
     }
 
@@ -108,6 +116,10 @@ class MainActivity : BaseActivity(), MainView, SlidingPaneLayout.PanelSlideListe
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, MessagesListFragment())
                 .commit()
+    }
+
+    override fun showUserMenu() {
+        startActivity(Intent(this, UserActivity::class.java))
     }
 
 
@@ -154,5 +166,13 @@ class MainActivity : BaseActivity(), MainView, SlidingPaneLayout.PanelSlideListe
     }
 
     override fun onPanelOpened(panel: View) { }
+
+    fun getMenuIcon(type: String): Int? {
+        return when (type) {
+            "about_us" -> R.drawable.ic_info_black_16dp
+            "report" -> R.drawable.ic_chat_black_24dp
+            else -> null
+        }
+    }
 
 }

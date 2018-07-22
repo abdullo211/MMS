@@ -9,6 +9,8 @@ import com.mindorks.placeholderview.annotations.View
 import com.mindorks.placeholderview.annotations.expand.Parent
 import com.wd.mms.R
 import com.wd.mms.entity.Message
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Parent
 @Layout(R.layout.list_item_message)
@@ -26,13 +28,28 @@ class MessageListItem(private val message: Message, private val onSeeMoreClick: 
     @Resolve
     fun onResolve() {
         descriptionText.text = message.description
-        dateText.text = message.createdDate
+        dateText.text = message.createdDate?.parsedDateShortSeparator()
         iconImage.setImageResource(getStatusImage(message.type))
     }
 
     @Click(R.id.messageItemMainLayout)
     fun onSeeMoreClicked() {
         onSeeMoreClick.invoke(message)
+    }
+
+    fun String.parsedDateShortSeparator(): String {
+        val df = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.ENGLISH)
+        val sdf: SimpleDateFormat
+        val result: Date
+        try {
+            result = df.parse(this)
+            sdf = SimpleDateFormat("yyyy-MM-dd", Locale("ru"))
+            sdf.timeZone = TimeZone.getTimeZone("GMT")
+        } catch (ignored: Exception) {
+            ignored.printStackTrace()
+            return this
+        }
+        return sdf.format(result)
     }
 
     private fun getStatusImage(type: String): Int {
